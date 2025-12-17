@@ -36,7 +36,7 @@ public class ApiConstants {
     
     // Highscores
     public static String highscores(String world, String category, String vocation, int page) {
-        return BASE_URL + "/highscores/" + world + "/" + category + "/" + vocation + "/1/" + page;
+        return BASE_URL + "/highscores/" + world + "/" + category + "/" + vocation + "/" + page;
     }
     
     // Fansites

@@ -12,7 +12,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
-import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.byteunion.tibiadex.R;
 import com.byteunion.tibiadex.network.ApiConstants;
@@ -88,15 +87,13 @@ public class HouseDetailActivity extends AppCompatActivity {
                         // Imagem
                         String imgUrl = house.getString("img");
                         if (!imgUrl.isEmpty()) {
-                            ImageRequest imgReq = new ImageRequest(
-                                imgUrl,
-                                imgHouse::setImageBitmap,
-                                0, 0,
-                                ImageView.ScaleType.CENTER_CROP,
-                                Bitmap.Config.RGB_565,
-                                error -> imgHouse.setVisibility(View.GONE)
-                            );
-                            VolleySingleton.getInstance(this).addToRequestQueue(imgReq);
+                            Picasso.get()
+                                    .load(imgUrl)
+                                    .placeholder(R.color.tibia_surface)
+                                    .error(R.color.tibia_surface)
+                                    .into(imgHouse);
+                        } else {
+                            imgHouse.setVisibility(View.GONE);
                         }
 
                         // Status

@@ -1,6 +1,5 @@
 package com.byteunion.tibiadex.ui.adapter;
 
-import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,10 +8,9 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.volley.toolbox.ImageRequest;
-import com.android.volley.toolbox.Volley;
 import com.byteunion.tibiadex.R;
 import com.byteunion.tibiadex.data.model.Spell;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -73,17 +71,14 @@ public class SpellAdapter extends RecyclerView.Adapter<SpellAdapter.ViewHolder> 
         // Imagem (se disponível)
         if (s.hasDetailedInfo && s.imageUrl != null && !s.imageUrl.isEmpty()) {
             holder.image.setVisibility(View.VISIBLE);
-            ImageRequest imgReq = new ImageRequest(
-                    s.imageUrl,
-                    holder.image::setImageBitmap,
-                    0, 0,
-                    ImageView.ScaleType.CENTER_CROP,
-                    Bitmap.Config.RGB_565,
-                    error -> holder.image.setVisibility(View.GONE)
-            );
-            Volley.newRequestQueue(holder.itemView.getContext()).add(imgReq);
+            Picasso.get()
+                    .load(s.imageUrl)
+                    .placeholder(R.color.tibia_surface)
+                    .error(R.color.tibia_surface)
+                    .into(holder.image);
         } else {
             holder.image.setVisibility(View.GONE);
+            Picasso.get().cancelRequest(holder.image);
         }
     }
 

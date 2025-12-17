@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
-import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.byteunion.tibiadex.R;
 import com.byteunion.tibiadex.data.model.Creature;
@@ -92,15 +91,11 @@ public class CreaturesActivity extends AppCompatActivity {
                         JSONObject boosted = creatures.getJSONObject("boosted");
                         tvBoostedName.setText(boosted.getString("name"));
                         
-                        ImageRequest imgReq = new ImageRequest(
-                            boosted.getString("image_url"),
-                            imgBoosted::setImageBitmap,
-                            0, 0,
-                            ImageView.ScaleType.CENTER_CROP,
-                            Bitmap.Config.RGB_565,
-                            error -> {}
-                        );
-                        VolleySingleton.getInstance(this).addToRequestQueue(imgReq);
+                        Picasso.get()
+                                .load(boosted.getString("image_url"))
+                                .placeholder(R.color.tibia_surface)
+                                .error(R.color.tibia_surface)
+                                .into(imgBoosted);
 
                         // Creature list - apenas dados básicos
                         JSONArray list = creatures.getJSONArray("creature_list");

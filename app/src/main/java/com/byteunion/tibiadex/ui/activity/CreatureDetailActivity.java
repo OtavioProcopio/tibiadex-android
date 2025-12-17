@@ -12,7 +12,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
-import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.byteunion.tibiadex.R;
 import com.byteunion.tibiadex.network.ApiConstants;
@@ -81,15 +80,11 @@ public class CreatureDetailActivity extends AppCompatActivity {
                         tvName.setText(creature.getString("name"));
                         
                         // Carregar imagem
-                        ImageRequest imgReq = new ImageRequest(
-                            creature.getString("image_url"),
-                            imgCreature::setImageBitmap,
-                            0, 0,
-                            ImageView.ScaleType.CENTER_CROP,
-                            Bitmap.Config.RGB_565,
-                            error -> {}
-                        );
-                        VolleySingleton.getInstance(this).addToRequestQueue(imgReq);
+                        Picasso.get()
+                                .load(creature.getString("image_url"))
+                                .placeholder(R.color.tibia_surface)
+                                .error(R.color.tibia_surface)
+                                .into(imgCreature);
 
                         // Textos descritivos
                         tvDescription.setText(creature.optString("description", "N/A"));

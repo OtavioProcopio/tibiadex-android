@@ -1,7 +1,6 @@
 package com.byteunion.tibiadex.ui.adapter;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,10 +10,9 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.volley.toolbox.ImageRequest;
-import com.android.volley.toolbox.Volley;
 import com.byteunion.tibiadex.R;
 import com.byteunion.tibiadex.data.model.Fansite;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -78,17 +76,14 @@ public class FansiteAdapter extends RecyclerView.Adapter<FansiteAdapter.ViewHold
         // Logo
         if (f.logoUrl != null && !f.logoUrl.isEmpty()) {
             holder.logo.setVisibility(View.VISIBLE);
-            ImageRequest imgReq = new ImageRequest(
-                f.logoUrl,
-                holder.logo::setImageBitmap,
-                0, 0,
-                ImageView.ScaleType.CENTER_CROP,
-                Bitmap.Config.RGB_565,
-                error -> holder.logo.setVisibility(View.GONE)
-            );
-            Volley.newRequestQueue(holder.itemView.getContext()).add(imgReq);
+            Picasso.get()
+                    .load(f.logoUrl)
+                    .placeholder(R.color.tibia_surface)
+                    .error(R.color.tibia_surface)
+                    .into(holder.logo);
         } else {
             holder.logo.setVisibility(View.GONE);
+            Picasso.get().cancelRequest(holder.logo);
         }
 
         // Click opens homepage

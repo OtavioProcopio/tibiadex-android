@@ -1,6 +1,5 @@
 package com.byteunion.tibiadex.ui.activity;
 
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,13 +14,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
-import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.byteunion.tibiadex.R;
 import com.byteunion.tibiadex.data.model.Boss;
 import com.byteunion.tibiadex.network.ApiConstants;
 import com.byteunion.tibiadex.network.VolleySingleton;
 import com.byteunion.tibiadex.ui.adapter.BossAdapter;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -88,17 +87,11 @@ public class BossesActivity extends AppCompatActivity {
 
                         boostedName.setText(boosted.getString("name"));
 
-                        ImageRequest imgReq = new ImageRequest(
-                                boosted.getString("image_url"),
-                                boostedImg::setImageBitmap,
-                                0, 0,
-                                ImageView.ScaleType.CENTER_CROP,
-                                Bitmap.Config.RGB_565,
-                                error -> Toast.makeText(this,
-                                        "Erro ao carregar imagem do boss boostado",
-                                        Toast.LENGTH_SHORT).show()
-                        );
-                        VolleySingleton.getInstance(this).addToRequestQueue(imgReq);
+                        Picasso.get()
+                                .load(boosted.getString("image_url"))
+                                .placeholder(R.color.tibia_surface)
+                                .error(R.color.tibia_surface)
+                                .into(boostedImg);
 
                         JSONArray list = data.getJSONArray("boostable_boss_list");
 
