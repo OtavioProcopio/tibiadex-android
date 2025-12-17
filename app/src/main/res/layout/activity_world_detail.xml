@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/tibia_background"
+    android:paddingTop="24dp"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp">
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="← Voltar"
+        android:backgroundTint="@color/tibia_gold"
+        android:textColor="@color/tibia_text_dark" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:cardBackgroundColor="@color/tibia_surface"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tvWorldTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/tibia_gold" />
+
+            <TextView
+                android:id="@+id/tvWorldSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textSize="14sp"
+                android:textColor="@color/tibia_text_light" />
+
+            <TextView
+                android:id="@+id/tvWorldInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:textSize="13sp"
+                android:textColor="@color/tibia_text_light" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
+
+        <Button
+            android:id="@+id/btnTogglePlayers"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="👥 Jogadores"
+            android:backgroundTint="@color/tibia_gold"
+            android:textColor="@color/tibia_text_dark"
+            android:layout_marginEnd="8dp" />
+
+        <Button
+            android:id="@+id/btnToggleKills"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="☠️ Kills"
+            android:backgroundTint="@color/tibia_surface"
+            android:textColor="@color/tibia_gold"
+            android:layout_marginStart="8dp" />
+
+    </LinearLayout>
+
+    <!-- PLAYERS SECTION -->
+    <LinearLayout
+        android:id="@+id/layoutPlayers"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <EditText
+            android:id="@+id/etSearchPlayer"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Buscar jogador..."
+            android:textColor="@color/tibia_text_light"
+            android:textColorHint="@color/tibia_text_light"
+            android:background="@color/tibia_surface"
+            android:padding="12dp"
+            android:layout_marginTop="12dp"
+            android:inputType="text" />
+
+        <HorizontalScrollView
+            android:id="@+id/layoutFilters"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            android:layout_marginTop="12dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnKnight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="⚔️ Knight"
+                    android:textSize="12sp"
+                    android:backgroundTint="@color/tibia_surface"
+                    android:textColor="@color/tibia_gold"
+                    android:layout_marginEnd="8dp" />
+
+                <Button
+                    android:id="@+id/btnPaladin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="🏹 Paladin"
+                    android:textSize="12sp"
+                    android:backgroundTint="@color/tibia_surface"
+                    android:textColor="@color/tibia_gold"
+                    android:layout_marginEnd="8dp" />
+
+                <Button
+                    android:id="@+id/btnSorcerer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="🔥 Sorcerer"
+                    android:textSize="12sp"
+                    android:backgroundTint="@color/tibia_surface"
+                    android:textColor="@color/tibia_gold"
+                    android:layout_marginEnd="8dp" />
+
+                <Button
+                    android:id="@+id/btnDruid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="🌿 Druid"
+                    android:textSize="12sp"
+                    android:backgroundTint="@color/tibia_surface"
+                    android:textColor="@color/tibia_gold" />
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerPlayers"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="12dp" />
+
+    </LinearLayout>
+
+    <!-- KILLS SECTION -->
+    <LinearLayout
+        android:id="@+id/layoutKills"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <EditText
+            android:id="@+id/etSearchKill"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Buscar criatura..."
+            android:textColor="@color/tibia_text_light"
+            android:textColorHint="@color/tibia_text_light"
+            android:background="@color/tibia_surface"
+            android:padding="12dp"
+            android:layout_marginTop="12dp"
+            android:inputType="text" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerKills"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="12dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

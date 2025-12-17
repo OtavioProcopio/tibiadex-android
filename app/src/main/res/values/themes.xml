@@ -1,0 +1,12 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Theme.Tibiadex" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/tibia_gold</item>
+        <item name="colorPrimaryVariant">@color/tibia_gold_light</item>
+        <item name="colorOnPrimary">@color/tibia_text_dark</item>
+
+        <item name="android:windowBackground">@color/tibia_background</item>
+        <item name="android:textColor">@color/tibia_text_light</item>
+    </style>
+
+</resources>

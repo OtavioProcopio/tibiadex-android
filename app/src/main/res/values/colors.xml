@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="tibia_background">#1B140F</color>
+    <color name="tibia_surface">#2E241C</color>
+
+    <color name="tibia_gold">#D4AF37</color>
+    <color name="tibia_gold_light">#F5D76E</color>
+
+    <color name="tibia_text_light">#EDEDED</color>
+    <color name="tibia_text_dark">#1A1A1A</color>
+</resources>

@@ -1,0 +1,29 @@
+<resources>
+
+    <style name="TibiaButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:backgroundTint">@color/tibia_gold</item>
+        <item name="android:textColor">@color/tibia_text_dark</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:padding">14dp</item>
+        <item name="cornerRadius">12dp</item>
+    </style>
+
+    <style name="TibiaTitle">
+        <item name="android:textColor">@color/tibia_gold_light</item>
+        <item name="android:textSize">26sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="FilterChip" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">36dp</item>
+        <item name="android:textSize">12sp</item>
+        <item name="cornerRadius">18dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:paddingHorizontal">12dp</item>
+    </style>
+
+
+
+</resources>

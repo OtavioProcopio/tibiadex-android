@@ -1,0 +1,105 @@
+<com.google.android.material.card.MaterialCardView
+    android:id="@+id/cardRoot"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    app:cardCornerRadius="18dp"
+    app:cardElevation="10dp"
+    app:cardBackgroundColor="@color/tibia_surface">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- NOME -->
+        <TextView
+            android:id="@+id/tvCharName"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/tibia_gold"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <!-- TÍTULO -->
+        <TextView
+            android:id="@+id/tvCharTitle"
+            android:textSize="14sp"
+            android:textColor="@color/tibia_text_light"
+            android:gravity="center"
+            android:layout_marginTop="2dp"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <!-- CLASSE / LEVEL / WORLD -->
+        <TextView
+            android:id="@+id/tvCharMainInfo"
+            android:textSize="15sp"
+            android:textColor="@color/tibia_text_light"
+            android:gravity="center"
+            android:layout_marginTop="6dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <!-- DIVISOR -->
+        <View
+            android:layout_marginVertical="14dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/tibia_gold"/>
+
+        <!-- BADGES -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvAccountStatus"
+                android:padding="6dp"
+                android:textSize="12sp"
+                android:textColor="@android:color/black"
+                android:background="@color/tibia_gold"
+                android:layout_marginEnd="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/tvAchievementPoints"
+                android:padding="6dp"
+                android:textSize="12sp"
+                android:textColor="@color/tibia_text_light"
+                android:background="@color/tibia_background"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <!-- INFO -->
+        <TextView
+            android:id="@+id/tvCharDetails"
+            android:layout_marginTop="14dp"
+            android:textSize="14sp"
+            android:textColor="@color/tibia_text_light"
+            android:lineSpacingExtra="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <!-- FORMER NAMES -->
+        <TextView
+            android:id="@+id/tvFormerNames"
+            android:layout_marginTop="10dp"
+            android:textSize="13sp"
+            android:textColor="@color/tibia_text_light"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

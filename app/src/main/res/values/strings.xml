@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">Tibiadex</string>
+
+    <!-- Characters -->
+    <string name="search_character_hint">Nome do personagem</string>
+    <string name="search_button">Buscar</string>
+
+    <!-- Character card -->
+    <string name="character_name">Nome</string>
+    <string name="character_world">World</string>
+    <string name="character_level">Level</string>
+    <string name="character_vocation">Vocação</string>
+    <string name="character_residence">Residence</string>
+    <string name="character_account_status">Account</string>
+
+    <string name="back_button">⬅ Voltar</string>
+
+    <string name="char_main_info">%1$s • Level %2$d • %3$s</string>
+
+    <string name="char_details">
+    Sexo: %1$s\nResidência: %2$s\nÚltimo login: %3$s
+    </string>
+
+    <string name="former_names">Former names:</string>
+    <string name="achievement_points">Achievements: %1$d</string>
+
+    <string name="error_character">Erro ao processar personagem</string>
+    <string name="character_not_found">Personagem não encontrado</string>
+    <string name="invalid_name">Nome inválido</string>
+    <string name="type_character_name">Digite o nome do personagem</string>
+
+
+
+</resources>

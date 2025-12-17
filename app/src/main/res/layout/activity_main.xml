@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="24dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="16dp">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            style="@style/TibiaTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tibia Companion"
+            android:gravity="center"
+            android:layout_marginBottom="24dp"/>
+
+        <Button
+            android:id="@+id/btnCharacters"
+            style="@style/TibiaButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📌 Personagens"
+            android:layout_marginBottom="12dp"/>
+
+        <Button
+            android:id="@+id/btnCreatures"
+            style="@style/TibiaButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🐉 Criaturas"
+            android:layout_marginBottom="12dp"/>
+
+        <Button
+            android:id="@+id/btnBosses"
+            android:layout_width="match_parent"
+            style="@style/TibiaButton"
+            android:layout_height="wrap_content"
+            android:text="⚔️ Bosses"
+            android:layout_marginBottom="12dp"/>
+
+        <Button
+            android:id="@+id/btnWorlds"
+            android:layout_width="match_parent"
+            style="@style/TibiaButton"
+            android:layout_height="wrap_content"
+            android:text="🌍 Mundos"
+            android:layout_marginBottom="12dp"/>
+
+        <Button
+            android:id="@+id/btnSpells"
+            android:layout_width="match_parent"
+            style="@style/TibiaButton"
+            android:layout_height="wrap_content"
+            android:text="✨ Spells"
+            android:layout_marginBottom="12dp"/>
+
+        <Button
+            android:id="@+id/btnHighscores"
+            style="@style/TibiaButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🏆 Highscores"
+            android:layout_marginBottom="12dp"/>
+
+        <Button
+            android:id="@+id/btnFansites"
+            style="@style/TibiaButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🌐 Fansites"
+            android:layout_marginBottom="12dp"/>
+
+        <Button
+            android:id="@+id/btnHouses"
+            style="@style/TibiaButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🏘️ Casas"
+            android:layout_marginBottom="12dp"/>
+
+        <Button
+            android:id="@+id/btnNews"
+            style="@style/TibiaButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📰 Notícias"/>
+
+    </LinearLayout>
+</ScrollView>
