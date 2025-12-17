@@ -21,6 +21,7 @@ import com.byteunion.tibiadex.data.model.Creature;
 import com.byteunion.tibiadex.network.ApiConstants;
 import com.byteunion.tibiadex.network.VolleySingleton;
 import com.byteunion.tibiadex.ui.adapter.CreatureAdapter;
+import com.google.android.material.card.MaterialCardView;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -35,11 +36,10 @@ public class CreaturesActivity extends AppCompatActivity {
     private RecyclerView recyclerCreatures;
     private CreatureAdapter adapter;
     
+    private MaterialCardView cardBoosted;
     private ImageView imgBoosted;
     private TextView tvBoostedName;
     private TextView tvCreatureCount;
-    private TextView tvTotalCreatures;
-    private TextView tvFilteredCount;
 
     private final List<Creature> allCreatures = new ArrayList<>();
     private final List<Creature> filteredCreatures = new ArrayList<>();
@@ -60,11 +60,10 @@ public class CreaturesActivity extends AppCompatActivity {
         btnBack.setOnClickListener(v -> finish());
 
         progressLoading = findViewById(R.id.progressLoading);
+        cardBoosted = findViewById(R.id.cardBoosted);
         imgBoosted = findViewById(R.id.imgBoosted);
         tvBoostedName = findViewById(R.id.tvBoostedName);
         tvCreatureCount = findViewById(R.id.tvCreatureCount);
-        tvTotalCreatures = findViewById(R.id.tvTotalCreatures);
-        tvFilteredCount = findViewById(R.id.tvFilteredCount);
         etSearch = findViewById(R.id.etSearch);
 
         recyclerCreatures = findViewById(R.id.recyclerCreatures);
@@ -95,13 +94,24 @@ public class CreaturesActivity extends AppCompatActivity {
                         
                         // Boosted creature
                         JSONObject boosted = creatures.getJSONObject("boosted");
-                        tvBoostedName.setText(boosted.getString("name"));
+                        final String boostedRace = boosted.getString("race");
+                        final String boostedName = boosted.getString("name");
+                        
+                        tvBoostedName.setText(boostedName);
                         
                         Picasso.get()
                                 .load(boosted.getString("image_url"))
                                 .placeholder(R.color.tibia_surface)
                                 .error(R.color.tibia_surface)
                                 .into(imgBoosted);
+                        
+                        // Tornar card clicável
+                        cardBoosted.setOnClickListener(v -> {
+                            Intent i = new Intent(this, CreatureDetailActivity.class);
+                            i.putExtra("creature_race", boostedRace);
+                            i.putExtra("creature_name", boostedName);
+                            startActivity(i);
+                        });
 
                         // Creature list - apenas dados básicos
                         JSONArray list = creatures.getJSONArray("creature_list");
@@ -196,7 +206,5 @@ public class CreaturesActivity extends AppCompatActivity {
 
     private void updateStats() {
         tvCreatureCount.setText(String.format("%d criaturas catalogadas", allCreatures.size()));
-        tvTotalCreatures.setText(String.valueOf(allCreatures.size()));
-        tvFilteredCount.setText(String.valueOf(filteredCreatures.size()));
     }
 }

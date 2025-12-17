@@ -2,11 +2,11 @@ package com.byteunion.tibiadex.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.byteunion.tibiadex.R;
+import com.google.android.material.card.MaterialCardView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,15 +15,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button btnCharacters = findViewById(R.id.btnCharacters);
-        Button btnCreatures = findViewById(R.id.btnCreatures);
-        Button btnBosses = findViewById(R.id.btnBosses);
-        Button btnWorlds = findViewById(R.id.btnWorlds);
-        Button btnSpells = findViewById(R.id.btnSpells);
-        Button btnHighscores = findViewById(R.id.btnHighscores);
-        Button btnFansites = findViewById(R.id.btnFansites);
-        Button btnHouses = findViewById(R.id.btnHouses);
-        Button btnNews = findViewById(R.id.btnNews);
+        MaterialCardView btnCharacters = findViewById(R.id.btnCharacters);
+        MaterialCardView btnCreatures = findViewById(R.id.btnCreatures);
+        MaterialCardView btnBosses = findViewById(R.id.btnBosses);
+        MaterialCardView btnWorlds = findViewById(R.id.btnWorlds);
+        MaterialCardView btnSpells = findViewById(R.id.btnSpells);
+        MaterialCardView btnHighscores = findViewById(R.id.btnHighscores);
+        MaterialCardView btnFansites = findViewById(R.id.btnFansites);
+        MaterialCardView btnHouses = findViewById(R.id.btnHouses);
+        MaterialCardView btnNews = findViewById(R.id.btnNews);
 
         btnCharacters.setOnClickListener(v ->
                 startActivity(new Intent(this, CharactersActivity.class)));

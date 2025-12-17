@@ -1,10 +1,10 @@
 package com.byteunion.tibiadex.ui.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,6 +16,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.byteunion.tibiadex.R;
 import com.byteunion.tibiadex.network.ApiConstants;
 import com.byteunion.tibiadex.network.VolleySingleton;
+import com.google.android.material.card.MaterialCardView;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -27,10 +28,13 @@ import java.util.List;
 public class CreatureDetailActivity extends AppCompatActivity {
 
     private ProgressBar progressLoading;
+    private LinearLayout layoutContent;
     private ImageView imgCreature;
-    private TextView tvName, tvDescription, tvBehaviour, tvHitpoints, tvExperience;
-    private TextView tvImmune, tvStrong, tvWeakness, tvLoot;
-    private TextView tvParalysed, tvSummoned, tvConvinced, tvSeeInvisible, tvLootable;
+    private TextView tvName, tvHP, tvXP;
+    private TextView tvDescription, tvBehaviour, tvLoot, tvCharacteristics;
+    private TextView tvImmune, tvStrong, tvWeakness;
+    private MaterialCardView cardDescription, cardBehaviour, cardLoot, cardCharacteristics;
+    private LinearLayout layoutImmune, layoutStrong, layoutWeakness;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,21 +45,32 @@ public class CreatureDetailActivity extends AppCompatActivity {
         btnBack.setOnClickListener(v -> finish());
 
         progressLoading = findViewById(R.id.progressLoading);
+        layoutContent = findViewById(R.id.layoutContent);
         imgCreature = findViewById(R.id.imgCreature);
         tvName = findViewById(R.id.tvName);
+        tvHP = findViewById(R.id.tvHP);
+        tvXP = findViewById(R.id.tvXP);
+        
+        cardDescription = findViewById(R.id.cardDescription);
         tvDescription = findViewById(R.id.tvDescription);
+        
+        cardBehaviour = findViewById(R.id.cardBehaviour);
         tvBehaviour = findViewById(R.id.tvBehaviour);
-        tvHitpoints = findViewById(R.id.tvHitpoints);
-        tvExperience = findViewById(R.id.tvExperience);
+        
+        layoutImmune = findViewById(R.id.layoutImmune);
         tvImmune = findViewById(R.id.tvImmune);
+        
+        layoutStrong = findViewById(R.id.layoutStrong);
         tvStrong = findViewById(R.id.tvStrong);
+        
+        layoutWeakness = findViewById(R.id.layoutWeakness);
         tvWeakness = findViewById(R.id.tvWeakness);
+        
+        cardLoot = findViewById(R.id.cardLoot);
         tvLoot = findViewById(R.id.tvLoot);
-        tvParalysed = findViewById(R.id.tvParalysed);
-        tvSummoned = findViewById(R.id.tvSummoned);
-        tvConvinced = findViewById(R.id.tvConvinced);
-        tvSeeInvisible = findViewById(R.id.tvSeeInvisible);
-        tvLootable = findViewById(R.id.tvLootable);
+        
+        cardCharacteristics = findViewById(R.id.cardCharacteristics);
+        tvCharacteristics = findViewById(R.id.tvCharacteristics);
 
         String creatureRace = getIntent().getStringExtra("creature_race");
         String creatureName = getIntent().getStringExtra("creature_name");
@@ -71,6 +86,7 @@ public class CreatureDetailActivity extends AppCompatActivity {
 
     private void fetchCreatureDetails(String race) {
         progressLoading.setVisibility(View.VISIBLE);
+        layoutContent.setVisibility(View.GONE);
 
         VolleySingleton.getInstance(this).addToRequestQueue(
             new JsonObjectRequest(Request.Method.GET, ApiConstants.creature(race), null,
@@ -87,31 +103,70 @@ public class CreatureDetailActivity extends AppCompatActivity {
                                 .error(R.color.tibia_surface)
                                 .into(imgCreature);
 
-                        // Textos descritivos
-                        tvDescription.setText(creature.optString("description", "N/A"));
-                        tvBehaviour.setText(creature.optString("behaviour", "N/A"));
-
                         // Stats
-                        tvHitpoints.setText("HP: " + creature.optInt("hitpoints", 0));
-                        tvExperience.setText("XP: " + creature.optInt("experience_points", 0));
+                        tvHP.setText(String.valueOf(creature.optInt("hitpoints", 0)));
+                        tvXP.setText(String.valueOf(creature.optInt("experience_points", 0)));
+
+                        // Descrição
+                        String description = creature.optString("description", "");
+                        if (!description.isEmpty()) {
+                            tvDescription.setText(description);
+                            cardDescription.setVisibility(View.VISIBLE);
+                        }
+
+                        // Comportamento
+                        String behaviour = creature.optString("behaviour", "");
+                        if (!behaviour.isEmpty()) {
+                            tvBehaviour.setText(behaviour);
+                            cardBehaviour.setVisibility(View.VISIBLE);
+                        }
 
                         // Resistências e fraquezas
-                        tvImmune.setText("Imune: " + joinArray(creature.optJSONArray("immune")));
-                        tvStrong.setText("Resistente: " + joinArray(creature.optJSONArray("strong")));
-                        tvWeakness.setText("Fraqueza: " + joinArray(creature.optJSONArray("weakness")));
+                        String immune = joinArray(creature.optJSONArray("immune"));
+                        if (!immune.equals("Nenhum")) {
+                            tvImmune.setText(immune);
+                            layoutImmune.setVisibility(View.VISIBLE);
+                        }
+                        
+                        String strong = joinArray(creature.optJSONArray("strong"));
+                        if (!strong.equals("Nenhum")) {
+                            tvStrong.setText(strong);
+                            layoutStrong.setVisibility(View.VISIBLE);
+                        }
+                        
+                        String weakness = joinArray(creature.optJSONArray("weakness"));
+                        if (!weakness.equals("Nenhum")) {
+                            tvWeakness.setText(weakness);
+                            layoutWeakness.setVisibility(View.VISIBLE);
+                        }
 
                         // Loot
                         String loot = joinArray(creature.optJSONArray("loot_list"));
-                        tvLoot.setText("Loot: " + (loot.isEmpty() ? "Nenhum" : loot));
+                        if (!loot.equals("Nenhum")) {
+                            tvLoot.setText(loot);
+                            cardLoot.setVisibility(View.VISIBLE);
+                        }
 
                         // Características booleanas
-                        tvParalysed.setText("Pode ser paralisado: " + (creature.optBoolean("be_paralysed", false) ? "Sim" : "Não"));
-                        tvSummoned.setText("Pode ser summonado: " + (creature.optBoolean("be_summoned", false) ? "Sim" : "Não"));
-                        tvConvinced.setText("Pode ser convencido: " + (creature.optBoolean("be_convinced", false) ? "Sim" : "Não"));
-                        tvSeeInvisible.setText("Vê invisível: " + (creature.optBoolean("see_invisible", false) ? "Sim" : "Não"));
-                        tvLootable.setText("Lootável: " + (creature.optBoolean("is_lootable", true) ? "Sim" : "Não"));
+                        List<String> characteristics = new ArrayList<>();
+                        if (creature.optBoolean("be_paralysed", false))
+                            characteristics.add("• Pode ser paralisado");
+                        if (creature.optBoolean("be_summoned", false))
+                            characteristics.add("• Pode ser summonado");
+                        if (creature.optBoolean("be_convinced", false))
+                            characteristics.add("• Pode ser convencido");
+                        if (creature.optBoolean("see_invisible", false))
+                            characteristics.add("• Vê invisível");
+                        if (creature.optBoolean("is_lootable", true))
+                            characteristics.add("• Lootável");
+                        
+                        if (!characteristics.isEmpty()) {
+                            tvCharacteristics.setText(String.join("\n", characteristics));
+                            cardCharacteristics.setVisibility(View.VISIBLE);
+                        }
 
                         progressLoading.setVisibility(View.GONE);
+                        layoutContent.setVisibility(View.VISIBLE);
 
                     } catch (Exception e) {
                         Toast.makeText(this, "Erro ao processar dados", Toast.LENGTH_LONG).show();
