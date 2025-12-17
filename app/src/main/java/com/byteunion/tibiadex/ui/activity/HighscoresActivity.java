@@ -170,7 +170,7 @@ public class HighscoresActivity extends AppCompatActivity {
         spinnerWorld.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (!worldsApi.isEmpty()) {
+                if (!worldsApi.isEmpty() && position < worldsApi.size()) {
                     selectedWorld = worldsApi.get(position);
                     currentPage = 1;
                     fetchHighscores();

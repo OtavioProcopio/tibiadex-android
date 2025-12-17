@@ -8,4 +8,10 @@
 
     <color name="tibia_text_light">#EDEDED</color>
     <color name="tibia_text_dark">#1A1A1A</color>
+    
+    <!-- News categories -->
+    <color name="news_development">#3D2E1F</color>
+    <color name="news_technical">#2F2821</color>
+    <color name="news_community">#2A3032</color>
+    <color name="news_default">#2E241C</color>
 </resources>

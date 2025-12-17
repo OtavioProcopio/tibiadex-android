@@ -39,12 +39,14 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
         holder.title.setText(n.news);
         holder.date.setText(formatDate(n.date));
-        holder.category.setText(getCategoryEmoji(n.category) + " " + getCategoryName(n.category));
-        holder.type.setText(n.type.equals("news") ? "📰" : "📌");
+        holder.type.setText(n.type.equals("news") ? "📰 Notícia" : "📌 Ticker");
 
-        // Cor do card por categoria
-        int color = holder.itemView.getContext().getColor(getCategoryColor(n.category));
-        holder.itemView.setBackgroundColor(color);
+        // Categoria com emoji e cor
+        String categoryText = getCategoryEmoji(n.category) + " " + getCategoryName(n.category);
+        holder.category.setText(categoryText);
+        
+        int categoryColor = holder.itemView.getContext().getColor(getCategoryTextColor(n.category));
+        holder.category.setTextColor(categoryColor);
 
         holder.itemView.setOnClickListener(v -> listener.onClick(n));
     }
@@ -83,10 +85,19 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
     private int getCategoryColor(String category) {
         switch (category.toLowerCase()) {
+            case "development": return R.color.news_development;
+            case "technical": return R.color.news_technical;
+            case "community": return R.color.news_community;
+            default: return R.color.news_default;
+        }
+    }
+
+    private int getCategoryTextColor(String category) {
+        switch (category.toLowerCase()) {
             case "development": return R.color.tibia_gold;
             case "technical": return R.color.tibia_gold_light;
-            case "community": return R.color.tibia_text_light;
-            default: return R.color.tibia_surface;
+            case "community": return android.R.color.holo_blue_light;
+            default: return R.color.tibia_text_light;
         }
     }
 
