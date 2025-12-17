@@ -24,7 +24,9 @@
         android:layout_marginTop="16dp"
         app:cardBackgroundColor="@color/tibia_surface"
         app:cardElevation="4dp"
-        app:cardCornerRadius="8dp">
+        app:cardCornerRadius="8dp"
+        app:strokeColor="@color/tibia_gold"
+        app:strokeWidth="2dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -38,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                android:textColor="@color/tibia_gold" />
+                android:textColor="@color/tibia_text_light" />
 
             <TextView
                 android:id="@+id/tvWorldSubtitle"
@@ -46,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:textSize="14sp"
-                android:textColor="@color/tibia_text_light" />
+                android:textColor="@color/tibia_blue" />
 
             <TextView
                 android:id="@+id/tvWorldInfo"
@@ -54,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:textSize="13sp"
-                android:textColor="@color/tibia_text_light" />
+                android:textColor="@color/tibia_gold_light" />
 
         </LinearLayout>
 
@@ -66,25 +68,47 @@
         android:orientation="horizontal"
         android:layout_marginTop="16dp">
 
-        <Button
-            android:id="@+id/btnTogglePlayers"
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="👥 Jogadores"
-            android:backgroundTint="@color/tibia_gold"
-            android:textColor="@color/tibia_text_dark"
-            android:layout_marginEnd="8dp" />
+            android:layout_marginEnd="8dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="@color/tibia_gold"
+            app:strokeColor="@color/tibia_gold_light"
+            app:strokeWidth="2dp">
+            
+            <Button
+                android:id="@+id/btnTogglePlayers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="👥 Jogadores"
+                android:backgroundTint="@android:color/transparent"
+                android:textColor="@color/tibia_text_dark"
+                android:textStyle="bold" />
+        </com.google.android.material.card.MaterialCardView>
 
-        <Button
-            android:id="@+id/btnToggleKills"
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="☠️ Kills"
-            android:backgroundTint="@color/tibia_surface"
-            android:textColor="@color/tibia_gold"
-            android:layout_marginStart="8dp" />
+            android:layout_marginStart="8dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="@color/tibia_surface"
+            app:strokeColor="@color/tibia_red"
+            app:strokeWidth="2dp">
+            
+            <Button
+                android:id="@+id/btnToggleKills"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="☠️ Kills"
+                android:backgroundTint="@android:color/transparent"
+                android:textColor="@color/tibia_red"
+                android:textStyle="bold" />
+        </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>
 
@@ -97,17 +121,27 @@
         android:orientation="vertical"
         android:visibility="visible">
 
-        <EditText
-            android:id="@+id/etSearchPlayer"
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:hint="Buscar jogador..."
-            android:textColor="@color/tibia_text_light"
-            android:textColorHint="@color/tibia_text_light"
-            android:background="@color/tibia_surface"
-            android:padding="12dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:inputType="text" />
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="@color/tibia_surface"
+            app:strokeColor="@color/tibia_blue"
+            app:strokeWidth="1dp">
+            
+            <EditText
+                android:id="@+id/etSearchPlayer"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Buscar jogador..."
+                android:textColor="@color/tibia_text_light"
+                android:textColorHint="@color/tibia_blue"
+                android:background="@android:color/transparent"
+                android:padding="12dp"
+                android:inputType="text" />
+        </com.google.android.material.card.MaterialCardView>
 
         <HorizontalScrollView
             android:id="@+id/layoutFilters"

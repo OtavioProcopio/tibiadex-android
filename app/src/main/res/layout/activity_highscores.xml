@@ -35,53 +35,73 @@
                 android:layout_marginBottom="16dp"/>
 
             <!-- Filtros -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Mundo:"
-                android:textColor="@color/tibia_text_light"
-                android:textSize="14sp"
-                android:layout_marginBottom="4dp"/>
-
-            <Spinner
-                android:id="@+id/spinnerWorld"
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/tibia_surface"
-                android:padding="12dp"
-                android:layout_marginBottom="12dp"/>
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="@color/tibia_surface"
+                app:strokeColor="@color/tibia_blue"
+                app:strokeWidth="1dp">
+                
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+                    
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mundo:"
+                        android:textColor="@color/tibia_blue"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:layout_marginBottom="8dp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Categoria:"
-                android:textColor="@color/tibia_text_light"
-                android:textSize="14sp"
-                android:layout_marginBottom="4dp"/>
+                    <Spinner
+                        android:id="@+id/spinnerWorld"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/tibia_background"
+                        android:padding="12dp"
+                        android:layout_marginBottom="16dp"/>
 
-            <Spinner
-                android:id="@+id/spinnerCategory"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/tibia_surface"
-                android:padding="12dp"
-                android:layout_marginBottom="12dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Categoria:"
+                        android:textColor="@color/tibia_gold"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:layout_marginBottom="8dp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Vocação:"
-                android:textColor="@color/tibia_text_light"
-                android:textSize="14sp"
-                android:layout_marginBottom="4dp"/>
+                    <Spinner
+                        android:id="@+id/spinnerCategory"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/tibia_background"
+                        android:padding="12dp"
+                        android:layout_marginBottom="16dp"/>
 
-            <Spinner
-                android:id="@+id/spinnerVocation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/tibia_surface"
-                android:padding="12dp"
-                android:layout_marginBottom="16dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Vocação:"
+                        android:textColor="@color/tibia_purple"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:layout_marginBottom="8dp"/>
+
+                    <Spinner
+                        android:id="@+id/spinnerVocation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/tibia_background"
+                        android:padding="12dp"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
             <!-- RecyclerView -->
             <androidx.recyclerview.widget.RecyclerView

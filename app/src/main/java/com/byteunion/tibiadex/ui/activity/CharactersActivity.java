@@ -28,6 +28,7 @@ public class CharactersActivity extends AppCompatActivity {
 
     private EditText etCharacterName;
     private View includeCard;
+    private View cardFormerNames;
 
     private TextView tvCharName;
     private TextView tvCharTitle;
@@ -50,6 +51,7 @@ public class CharactersActivity extends AppCompatActivity {
         btnBack.setOnClickListener(v -> finish());
 
         includeCard = findViewById(R.id.characterCard);
+        cardFormerNames = includeCard.findViewById(R.id.cardFormerNames);
 
         tvCharName          = includeCard.findViewById(R.id.tvCharName);
         tvCharTitle         = includeCard.findViewById(R.id.tvCharTitle);
@@ -160,8 +162,10 @@ public class CharactersActivity extends AppCompatActivity {
 
                 tvFormerNames.setText(sb.toString());
                 tvFormerNames.setVisibility(View.VISIBLE);
+                cardFormerNames.setVisibility(View.VISIBLE);
             } else {
                 tvFormerNames.setVisibility(View.GONE);
+                cardFormerNames.setVisibility(View.GONE);
             }
 
             includeCard.setVisibility(View.VISIBLE);

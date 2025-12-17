@@ -14,4 +14,12 @@
     <color name="news_technical">#2F2821</color>
     <color name="news_community">#2A3032</color>
     <color name="news_default">#2E241C</color>
+    
+    <!-- Accent colors -->
+    <color name="tibia_blue">#5DADE2</color>
+    <color name="tibia_blue_dark">#2874A6</color>
+    <color name="tibia_green">#58D68D</color>
+    <color name="tibia_red">#EC7063</color>
+    <color name="tibia_purple">#AF7AC5</color>
+    <color name="tibia_orange">#F39C12</color>
 </resources>

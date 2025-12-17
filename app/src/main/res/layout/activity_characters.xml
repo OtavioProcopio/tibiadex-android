@@ -20,18 +20,29 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <!-- INPUT -->
-    <EditText
-        android:id="@+id/etCharacterName"
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="@string/search_character_hint"
-        android:background="@color/tibia_surface"
-        android:textColor="@color/tibia_text_light"
-        android:textColorHint="@color/tibia_text_light"
-        android:padding="12dp"
+        android:layout_marginBottom="0dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="2dp"
+        app:cardBackgroundColor="@color/tibia_surface"
+        app:strokeColor="@color/tibia_gold"
+        app:strokeWidth="2dp"
         app:layout_constraintBottom_toTopOf="@id/buttonsLayout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent">
+        
+        <EditText
+            android:id="@+id/etCharacterName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/search_character_hint"
+            android:background="@android:color/transparent"
+            android:textColor="@color/tibia_text_light"
+            android:textColorHint="@color/tibia_gold_light"
+            android:padding="16dp"/>
+    </com.google.android.material.card.MaterialCardView>
 
     <!-- BOTÕES -->
     <LinearLayout
