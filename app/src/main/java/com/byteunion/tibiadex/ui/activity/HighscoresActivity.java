@@ -220,6 +220,11 @@ public class HighscoresActivity extends AppCompatActivity {
     }
 
     private void fetchHighscores() {
+        // Validação: não chamar API se world estiver vazio
+        if (selectedWorld == null || selectedWorld.isEmpty()) {
+            return;
+        }
+        
         String url = ApiConstants.highscores(
             selectedWorld, selectedCategory, selectedVocation, currentPage
         );

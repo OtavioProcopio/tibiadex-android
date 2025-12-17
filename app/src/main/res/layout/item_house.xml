@@ -7,13 +7,15 @@
     android:layout_margin="8dp"
     app:cardBackgroundColor="@color/tibia_surface"
     app:cardElevation="4dp"
-    app:cardCornerRadius="8dp">
+    app:cardCornerRadius="8dp"
+    app:strokeColor="@color/tibia_gold"
+    app:strokeWidth="1dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="12dp">
+        android:padding="16dp">
 
         <TextView
             android:id="@+id/tvHouseName"
@@ -21,7 +23,7 @@
             android:layout_height="wrap_content"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:textColor="@color/tibia_gold" />
+            android:textColor="@color/tibia_text_light" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -34,7 +36,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="12sp"
+                android:textSize="13sp"
                 android:textColor="@color/tibia_text_light" />
 
             <TextView
@@ -42,9 +44,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="12sp"
+                android:textSize="13sp"
                 android:textStyle="bold"
-                android:textColor="@color/tibia_gold_light" />
+                android:textColor="@color/tibia_gold" />
 
         </LinearLayout>
 
@@ -55,7 +57,7 @@
             android:layout_marginTop="8dp"
             android:textSize="13sp"
             android:textStyle="bold"
-            android:textColor="@color/tibia_gold" />
+            android:textColor="@color/tibia_gold_light" />
 
     </LinearLayout>
 

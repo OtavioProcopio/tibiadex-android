@@ -7,18 +7,20 @@
     android:layout_margin="8dp"
     app:cardBackgroundColor="@color/tibia_surface"
     app:cardElevation="4dp"
-    app:cardCornerRadius="8dp">
+    app:cardCornerRadius="8dp"
+    app:strokeColor="@color/tibia_gold"
+    app:strokeWidth="1dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="12dp">
+        android:padding="16dp">
 
         <ImageView
             android:id="@+id/imgCreature"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
             android:layout_gravity="center_vertical"
             android:scaleType="centerCrop"
             android:contentDescription="Creature image" />
@@ -28,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:layout_marginStart="12dp">
+            android:layout_marginStart="16dp">
 
             <TextView
                 android:id="@+id/tvCreatureName"
@@ -36,15 +38,15 @@
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:textColor="@color/tibia_gold" />
+                android:textColor="@color/tibia_text_light" />
 
             <TextView
                 android:id="@+id/tvBasicInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:textSize="12sp"
-                android:textColor="@color/tibia_text_light" />
+                android:textSize="13sp"
+                android:textColor="@color/tibia_gold" />
 
         </LinearLayout>
 
