@@ -37,6 +37,9 @@ public class CreaturesActivity extends AppCompatActivity {
     
     private ImageView imgBoosted;
     private TextView tvBoostedName;
+    private TextView tvCreatureCount;
+    private TextView tvTotalCreatures;
+    private TextView tvFilteredCount;
 
     private final List<Creature> allCreatures = new ArrayList<>();
     private final List<Creature> filteredCreatures = new ArrayList<>();
@@ -59,6 +62,9 @@ public class CreaturesActivity extends AppCompatActivity {
         progressLoading = findViewById(R.id.progressLoading);
         imgBoosted = findViewById(R.id.imgBoosted);
         tvBoostedName = findViewById(R.id.tvBoostedName);
+        tvCreatureCount = findViewById(R.id.tvCreatureCount);
+        tvTotalCreatures = findViewById(R.id.tvTotalCreatures);
+        tvFilteredCount = findViewById(R.id.tvFilteredCount);
         etSearch = findViewById(R.id.etSearch);
 
         recyclerCreatures = findViewById(R.id.recyclerCreatures);
@@ -111,6 +117,7 @@ public class CreaturesActivity extends AppCompatActivity {
                         }
 
                         filteredCreatures.addAll(allCreatures);
+                        updateStats();
                         loadNextPage();
                         progressLoading.setVisibility(View.GONE);
 
@@ -182,7 +189,14 @@ public class CreaturesActivity extends AppCompatActivity {
             }
         }
         
+        updateStats();
         adapter.notifyDataSetChanged();
         loadNextPage();
+    }
+
+    private void updateStats() {
+        tvCreatureCount.setText(String.format("%d criaturas catalogadas", allCreatures.size()));
+        tvTotalCreatures.setText(String.valueOf(allCreatures.size()));
+        tvFilteredCount.setText(String.valueOf(filteredCreatures.size()));
     }
 }

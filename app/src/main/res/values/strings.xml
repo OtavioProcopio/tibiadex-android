@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Tibiadex</string>
+    <string name="app_name">Tibia API</string>
 
     <!-- Characters -->
     <string name="search_character_hint">Nome do personagem</string>
