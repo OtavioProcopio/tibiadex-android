@@ -1,7 +1,6 @@
 package com.byteunion.tibiadex.ui.activity;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +21,7 @@ import com.byteunion.tibiadex.data.model.Creature;
 import com.byteunion.tibiadex.network.ApiConstants;
 import com.byteunion.tibiadex.network.VolleySingleton;
 import com.byteunion.tibiadex.ui.adapter.CreatureAdapter;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
